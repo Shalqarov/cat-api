@@ -9,37 +9,36 @@ use GuzzleHttp\Exception\RequestException;
 $id = $_GET['id'];
 $url = 'https://api.thecatapi.com/v1/images/search';
 $category = 'Random cat';
+
 if($id != '') {
     $url = "https://api.thecatapi.com/v1/images/search?category_ids={$id}";
     switch ($id) {
         case '5':
-            $category = 'Cat in boxes';
+            $category = 'Cats in boxes';
             break;
         case '15':
-            $category = 'Cat in clothes';
+            $category = 'Cats in clothes';
             break;
         case '1':
-            $category = 'Cat with hat';
+            $category = 'Cats with hat';
             break;
         case '14':
-            $category = 'Cat in sinks';
+            $category = 'Cats in sinks';
             break;
         case '2':
-            $category = 'Cat in space';
+            $category = 'Cats in space';
             break;
         case '4':
-            $category = 'Cat with sunglasses';
+            $category = 'Cats with sunglasses';
             break;
         case '7':
-            $category = 'Cat with ties';
+            $category = 'Cats with ties';
             break;
         default:
             http_response_code(STATUS_BAD_REQUEST);
-            break;
+            die;
     }
 }
-
-echo $url;
 
 $client = new Client([
     'curl' => array(CURLOPT_SSL_VERIFYPEER => false,),
@@ -54,7 +53,6 @@ try {
 }catch (RequestException $e) {
     echo "Request Exception" . PHP_EOL;
     echo $e->getRequest() . PHP_EOL;
-    echo "Connection error";
     if ($e->hasResponse()) {
         echo $e->getResponse() . PHP_EOL;
     }
@@ -64,4 +62,3 @@ try {
 $body = $response->getBody();
 $data = json_decode($body);
 require __DIR__ . '/main_page.php';
-?>
