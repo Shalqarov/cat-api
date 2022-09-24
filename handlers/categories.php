@@ -1,7 +1,4 @@
 <?php
-$path = str_replace('/', DIRECTORY_SEPARATOR, __DIR__);
-// require $path . '/vendor/autoload.php';
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
