@@ -7,14 +7,12 @@ const STATUS_INTERNAL_SERVER_ERROR = 500;
 
 // $path = str_replace('/', DIRECTORY_SEPARATOR, __DIR__);
 $request = $_SERVER['REQUEST_URI'];
-switch ($request) {
-    case '/':
-        require  __DIR__ . '/handlers/main_page.php';
-        break;
-    case '/test':
-        require  __DIR__ . '/handlers/test.php';
-        break;
-    default:
-        http_response_code(STATUS_NOT_FOUND);
-        break;
-}
+require  __DIR__ . '/handlers/categories.php';
+//switch ($request) {
+//    case '/':
+//
+//        break;
+//    default:
+//        http_response_code(STATUS_NOT_FOUND);
+//        exit(STATUS_NOT_FOUND);
+//}
